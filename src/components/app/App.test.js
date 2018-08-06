@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import App from './App';
+import Header from '../header/Header'
+import Main from '../main/Main'
 
 const wrapper = shallow(<App />);
 
@@ -15,7 +17,10 @@ it('renders App without crashing - Enzyme smoke test', () => {
   shallow(<App />);
 });
 
-it('renders create-react-app message', () => {
-  const welcome = <p className="App-intro">To get started, edit <code>src/App.js</code> and save to reload.</p>;
-  expect(wrapper.contains(welcome)).toEqual(true);
+it('renders Header without crashing', () => {
+  shallow(<Header />);
+});
+
+it('renders Main without crashing', () => {
+  shallow(<Header />);
 });
