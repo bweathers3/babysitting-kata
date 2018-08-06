@@ -24,8 +24,3 @@ it('renders Header without crashing', () => {
 it('renders Main without crashing', () => {
   shallow(<Header />);
 });
-
-it('renders create-react-app message', () => {
-  const welcome = <p className="App-intro">To get started, edit <code>src/App.js</code> and save to reload.</p>;
-  expect(wrapper.contains(welcome)).toEqual(true);
-});
