@@ -5,6 +5,9 @@ class Main extends Component {
   render() {
     return (
       <div className="Main">
+        <p className="main-container-top">
+          Amy can not start before 5:00 PM.
+        </p>
 
       </div>
     );
@@ -12,4 +15,3 @@ class Main extends Component {
 }
 
 export default Main;
-      
