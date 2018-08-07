@@ -20,17 +20,21 @@ it('renders App without crashing - Enzyme smoke test', () => {
 });
 
 it('renders Header component without crashing', () => {
-  shallow(<Header />);
+  Header.displayName = 'Header';
+  const header = wrapper.find('Header');
 });
 
 it('renders Main component without crashing', () => {
-  shallow(<Main />);
+  Main.displayName = 'Main';
+  const main = wrapper.find('Main');
 });
 
 it('renders Notes component without crashing', () => {
-  shallow(<Notes />);
+  Notes.displayName = 'Notes';
+  const notes = wrapper.find('Notes');
 });
 
 it('renders Payment component without crashing', () => {
-  shallow(<Payment />);
+  Payment.displayName = 'Payment';
+  const payment = wrapper.find('Payment');
 });
