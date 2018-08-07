@@ -1,4 +1,6 @@
 .notes-container {
   font-size: medium;
+  padding-bottom: 10px;
   color: blue;
+  list-style-type: none;
 }
