@@ -63,4 +63,50 @@ describe("Static Component - with state", () => {
   it("should have state set for the Finish Time", () => {
      expect(wrapper.state().finishTimeInput).toEqual("");
   });
+
+  it("should have state set for the hours before bed time", () => {
+     expect(wrapper.state().hoursBeforeBedTime).toEqual(0);
+  });
+
+  it("should have state set for the hours after bed time and before midnight", () => {
+     expect(wrapper.state().hoursAfterBedTimeUntilMidnight).toEqual(0);
+  });
+
+  it("should have state set for the hours after midnight until finish", () => {
+     expect(wrapper.state().hoursAfterMidnightUntilFinishTime).toEqual(0);
+  });
+
+  it("should have state set for an extra hour before midnight", () => {
+     expect(wrapper.state().extraHourBeforeMidnight).toEqual(0);
+  });
+
+  it("should have state set for an extra hour after midnight", () => {
+     expect(wrapper.state().extraHourAfterMidnight).toEqual(0);
+  });
+});
+
+describe("Static Component Vars for Billing - with state", () => {
+  it("should have state set for the Billing before Bed Time", () => {
+     expect(wrapper.state().billForHoursBeforeBedTime).toEqual(0);
+  });
+
+  it("should have state set for the Billing for hours after bed time until midnight", () => {
+     expect(wrapper.state().billForHoursAfterBedTimeUntilMidnight).toEqual(0);
+  });
+
+  it("should have state set for the Billing for hours from midnight to finish", () => {
+     expect(wrapper.state().billForHoursAfterMidnightUntilFinishTime).toEqual(0);
+  });
+
+  it("should have state set for the Billing for extra hour before midnight", () => {
+     expect(wrapper.state().billForExtraHourBeforeMidnight).toEqual(0);
+  });
+
+  it("should have state set for the Billing for extra hour after midnight", () => {
+     expect(wrapper.state().billForExtraHourAfterMidnight).toEqual(0);
+  });
+
+  it("should have state set for the Final Invoice", () => {
+     expect(wrapper.state().totalInvoice).toEqual(0);
+  });
 });

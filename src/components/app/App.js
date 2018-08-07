@@ -14,7 +14,18 @@ class App extends Component {
       showFinalBillInfo: false,
       startTimeInput: "",
       bedTimeInput: "",
-      finishTimeInput: ""
+      finishTimeInput: "",
+      hoursBeforeBedTime: 0,
+      hoursAfterBedTimeUntilMidnight: 0,
+      hoursAfterMidnightUntilFinishTime: 0,
+      extraHourBeforeMidnight: 0,
+      extraHourAfterMidnight: 0,
+      billForHoursBeforeBedTime: 0,
+      billForHoursAfterBedTimeUntilMidnight: 0,
+      billForHoursAfterMidnightUntilFinishTime: 0,
+      billForExtraHourBeforeMidnight: 0,
+      billForExtraHourAfterMidnight: 0,
+      totalInvoice: 0
     }
    };
 
