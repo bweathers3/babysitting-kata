@@ -7,6 +7,17 @@ import TimeForm from '../timeForm/TimeForm'
 import './App.css';
 
 class App extends Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      showFinalBillInfo: false,
+      startTimeInput: "",
+      bedTimeInput: "",
+      finishTimeInput: ""
+    }
+   };
+
   render() {
     return (
       <div className="App">
