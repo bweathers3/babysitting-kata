@@ -6,6 +6,7 @@ import Header from '../header/Header'
 import Main from '../main/Main'
 import Notes from '../notes/Notes'
 import Payment from '../payment/Payment'
+import TimeForm from '../timeForm/TimeForm'
 
 const wrapper = shallow(<App />);
 
@@ -37,4 +38,9 @@ it('renders Notes component without crashing', () => {
 it('renders Payment component without crashing', () => {
   Payment.displayName = 'Payment';
   const payment = wrapper.find('Payment');
+});
+
+it('renders TimeForm component without crashing', () => {
+  TimeForm.displayName = 'TimeForm';
+  const timeForm = wrapper.find('TimeForm');
 });
