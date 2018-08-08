@@ -22,6 +22,7 @@ class TimeForm extends Component {
             <label for="finish-time">Finish Time:</label>
             <input type="time" className="time" name="finish-time" max="04:00" required />
           </p>
+          <button type="submit" className="sub-button">Submit Times</button>
         </form>
       </div>
     );
