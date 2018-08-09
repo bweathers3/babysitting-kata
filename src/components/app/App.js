@@ -6,6 +6,9 @@ import Payment from '../payment/Payment'
 import TimeForm from '../timeForm/TimeForm'
 import './App.css';
 
+var [ finished ] = [ true ];
+var [ finalPayment ] = [ 1000 ];
+
 class App extends Component {
 
   constructor (props) {
@@ -52,6 +55,18 @@ class App extends Component {
     console.log(this.finishTimeInput.value);
 
     this.setState({
+      hoursBeforeBedTime: 0,
+      hoursAfterBedTimeUntilMidnight: 0,
+      hoursAfterMidnightUntilFinishTime: 0,
+      extraHourBeforeMidnight: 0,
+      extraHourAfterMidnight: 0,
+      billForHoursBeforeBedTime: 0,
+      billForHoursAfterBedTimeUntilMidnight: 0,
+      billForHoursAfterMidnightUntilFinishTime: 0,
+      billForExtraHourBeforeMidnight: 0,
+      billForExtraHourAfterMidnight: 0,
+      totalInvoice: finalPayment,
+      showFinalBillInfo: finished
 
     }, () => {
             this.startTimeInput.value = '';
@@ -62,6 +77,9 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.totalInvoice);
+    console.log(this.state.showFinalBillInfo);
+
     return (
       <div className="App">
         <Header />
