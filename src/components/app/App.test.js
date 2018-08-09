@@ -110,3 +110,7 @@ describe("Static Component Vars for Billing - with state", () => {
      expect(wrapper.state().totalInvoice).toEqual(0);
   });
 });
+
+describe("Test State after TimeForm Input", () => {
+  
+});

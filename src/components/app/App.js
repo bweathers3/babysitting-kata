@@ -10,6 +10,9 @@ class App extends Component {
 
   constructor (props) {
     super(props);
+    this.startTimeInput = null;
+    this.bedTimeInput = null;
+    this.finishTimeInput = null;
     this.state = {
       showFinalBillInfo: false,
       startTimeInput: "",
@@ -27,13 +30,47 @@ class App extends Component {
       billForExtraHourAfterMidnight: 0,
       totalInvoice: 0
     }
+
+    this.setStartTimeInputRef = element => {
+     this.startTimeInput = element;
+    };
+
+    this.setBedTimeInputRef = element => {
+      this.bedTimeInput = element;
+    };
+
+    this.setFinishTimeInputRef = element => {
+      this.finishTimeInput = element;
+    };
    };
+
+  onFormSubmit(e){
+    e.preventDefault();
+    console.log(e);
+    console.log(this.startTimeInput.value);
+    console.log(this.bedTimeInput.value);
+    console.log(this.finishTimeInput.value);
+
+    this.setState({
+
+    }, () => {
+            this.startTimeInput.value = '';
+            this.bedTimeInput.value = '';
+            this.finishTimeInput.value = '';
+            });
+    e.target.value = '';
+  };
 
   render() {
     return (
       <div className="App">
         <Header />
-        <TimeForm />
+        <TimeForm
+          onFormSubmit={(e) => this.onFormSubmit(e)}
+          setStartTimeInputRef={this.setStartTimeInputRef}
+          setBedTimeInputRef={this.setBedTimeInputRef}
+          setFinishTimeInputRef={this.setFinishTimeInputRef}
+        />
         <Main />
         <Notes />
         <Payment />
