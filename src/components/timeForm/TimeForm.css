@@ -1,5 +1,19 @@
-
 .time {
   font-size: large;
   padding-bottom: 5px;
+}
+
+.sub-button {
+  float: center;
+  background-color: #0000ff;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.sub-button:hover {
+    background-color: #87CEEB;
+    color: white;
 }

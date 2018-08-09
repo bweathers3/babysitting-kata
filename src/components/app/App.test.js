@@ -110,3 +110,7 @@ describe("Static Component Vars for Billing - with state", () => {
      expect(wrapper.state().totalInvoice).toEqual(0);
   });
 });
+
+describe("Test State after TimeForm Input", () => {
+  {/* This is about the extent of my knowledge of TDD for Javascript and React/Redux */}
+});
