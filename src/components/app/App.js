@@ -6,8 +6,6 @@ import Payment from '../payment/Payment'
 import TimeForm from '../timeForm/TimeForm'
 import './App.css';
 
-var [ finished, finalPayment ] = [ true, 1000 ];
-
 class App extends Component {
 
   constructor (props) {
@@ -93,17 +91,36 @@ class App extends Component {
     this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
     //console.log(this.finishTimeInput);
     this.hoursBeforeBedTime = this.determineHoursForEachSegment(this.startTimesArray[0], this.bedTimesArray[0]);
-    //console.log(this.hoursBeforeBedTime);
+    console.log(this.hoursBeforeBedTime);
     this.extraHourBeforeMidnight = this.determineRoundUpHours(this.startTimesArray[1], this.bedTimesArray[1]);
-    //console.log(this.extraHourBeforeMidnight);
-    this.extraHourBeforeMidnight = 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
-    //console.log(this.hoursBeforeBedTime);
+    console.log(this.extraHourBeforeMidnight);
+    this.extraHourBeforeMidnight == 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
+    console.log(this.hoursBeforeBedTime);
     this.hoursAfterBedTimeUntilMidnight = this.determineBedTimeAndAfterMidnightHours(this.bedTimesArray[0], this.finishTimesArray[0]);
-    //console.log(this.hoursAfterBedTimeUntilMidnight);
+    console.log(this.hoursAfterBedTimeUntilMidnight);
     this.finishTimesArray[0] < 5 ? this.extraHourAfterMidnight = this.determineRoundUpHours(0, this.finishTimesArray[1]) : this.extraHourAfterMidnight = 0;
     //console.log(this.extraHourAfterMidnight);
     this.finishTimesArray[0] < 5 ? this.hoursAfterMidnightUntilFinishTime = this.finishTimesArray[0] : this.hoursAfterMidnightUntilFinishTime = 0;
     console.log(this.hoursAfterMidnightUntilFinishTime);
+
+    this.billForHoursBeforeBedTime = this.hoursBeforeBedTime  * 12;
+    console.log(this.billForHoursBeforeBedTime);
+    this.billForHoursAfterBedTimeUntilMidnight = this.hoursAfterBedTimeUntilMidnight  * 8;
+    console.log(this.billForHoursAfterBedTimeUntilMidnight);
+    this.billForHoursAfterMidnightUntilFinishTime = this.hoursAfterMidnightUntilFinishTime  * 16;
+    console.log(this.billForHoursAfterMidnightUntilFinishTime);
+    this.billForExtraHourBeforeMidnight = this.extraHourBeforeMidnight  * 12;
+    console.log(this.billForExtraHourBeforeMidnight);
+    this.billForExtraHourAfterMidnight = this.extraHourAfterMidnight  * 16;
+    console.log(this.billForExtraHourAfterMidnight);
+
+    this.totalInvoice = this.billForHoursBeforeBedTime +
+      this.billForHoursAfterBedTimeUntilMidnight +
+      this.billForHoursAfterMidnightUntilFinishTime +
+      this.billForExtraHourBeforeMidnight +
+      this.billForExtraHourAfterMidnight;
+    console.log(this.totalInvoice);
+
 
     //console.log(this.determineHoursForEachSegment(5, 8));
     //console.log(this.determineRoundUpHours(30, 30));
@@ -129,8 +146,8 @@ class App extends Component {
       billForHoursAfterMidnightUntilFinishTime: 0,
       billForExtraHourBeforeMidnight: 0,
       billForExtraHourAfterMidnight: 0,
-      totalInvoice: finalPayment,
-      showFinalBillInfo: finished
+      totalInvoice: this.totalInvoice,
+      showFinalBillInfo: true
 
     }, () => {
             this.startTimeInput.value = '';
@@ -143,13 +160,15 @@ class App extends Component {
   render() {
     console.log(this.state.totalInvoice);
     console.log(this.state.showFinalBillInfo);
+
+    console.log(this.totalInvoice);
     //console.log(this.hoursBeforeBedTime);
     //console.log(this.startTimesArray);
     //console.log(this.bedTimesArray);
     //console.log(this.finishTimesArray);
     //console.log(this.hoursAfterBedTimeUntilMidnight);
     //console.log(this.extraHourAfterMidnight);
-    console.log(this.extraHourAfterMidnight);
+    //console.log(this.extraHourAfterMidnight);
 
     return (
       <div className="App">
