@@ -6,9 +6,6 @@ import Payment from '../payment/Payment'
 import TimeForm from '../timeForm/TimeForm'
 import './App.css';
 
-var [ finished ] = [ true ];
-var [ finalPayment ] = [ 1000 ];
-
 class App extends Component {
 
   constructor (props) {
@@ -21,6 +18,9 @@ class App extends Component {
       startTimeInput: "",
       bedTimeInput: "",
       finishTimeInput: "",
+      startTimesArray: [],
+      bedTimesArray: [],
+      finishTimesArray:[],
       hoursBeforeBedTime: 0,
       hoursAfterBedTimeUntilMidnight: 0,
       hoursAfterMidnightUntilFinishTime: 0,
@@ -47,26 +47,74 @@ class App extends Component {
     };
    };
 
+   validateAfterMidnight(holdArray) {
+     var totalMins = (holdArray[0]*60) + holdArray[1];
+     return totalMins > 240 && totalMins < 1020 ?  false : true;
+   }
+
+  determineBedTimeAndAfterMidnightHours(bedTime, finishTime){
+    return finishTime <= 5 ?  24 - bedTime : finishTime - bedTime;
+  }
+
+  determineCostForSession(hours, chargePerHour){
+    return hours * chargePerHour;
+  }
+
+  determineRoundUpHours(firstMins, secondMins) {
+    return firstMins !== secondMins ? 1 : 0;
+  }
+
+  determineHoursForEachSegment(firstHour, secondHour) {
+    return secondHour - firstHour;
+  }
+
+  cutTime(str) {
+    return [ Number(str.slice(0, 2)), Number(str.slice(3, 5)) ]
+  }
+
   onFormSubmit(e){
     e.preventDefault();
-    console.log(e);
-    console.log(this.startTimeInput.value);
-    console.log(this.bedTimeInput.value);
-    console.log(this.finishTimeInput.value);
+
+    this.startTimesArray = this.cutTime(this.startTimeInput.value);
+    this.bedTimesArray = this.cutTime(this.bedTimeInput.value);
+    this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
+    this.showFinalBillInfo = this.validateAfterMidnight(this.finishTimesArray);
+    if (this.showFinalBillInfo == true){
+      this.hoursBeforeBedTime = this.determineHoursForEachSegment(this.startTimesArray[0], this.bedTimesArray[0]);
+      this.extraHourBeforeMidnight = this.determineRoundUpHours(this.startTimesArray[1], this.bedTimesArray[1]);
+      this.extraHourBeforeMidnight == 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
+      this.hoursAfterBedTimeUntilMidnight = this.determineBedTimeAndAfterMidnightHours(this.bedTimesArray[0], this.finishTimesArray[0]);
+      this.finishTimesArray[0] < 5 ? this.extraHourAfterMidnight = this.determineRoundUpHours(0, this.finishTimesArray[1]) : this.extraHourAfterMidnight = 0;
+      this.finishTimesArray[0] < 5 ? this.hoursAfterMidnightUntilFinishTime = this.finishTimesArray[0] : this.hoursAfterMidnightUntilFinishTime = 0;
+
+      this.billForHoursBeforeBedTime = this.hoursBeforeBedTime  * 12;
+      this.billForHoursAfterBedTimeUntilMidnight = this.hoursAfterBedTimeUntilMidnight  * 8;
+      this.billForHoursAfterMidnightUntilFinishTime = this.hoursAfterMidnightUntilFinishTime  * 16;
+      this.billForExtraHourBeforeMidnight = this.extraHourBeforeMidnight  * 12;
+      this.billForExtraHourAfterMidnight = this.extraHourAfterMidnight  * 16;
+
+      this.totalInvoice = this.billForHoursBeforeBedTime +
+        this.billForHoursAfterBedTimeUntilMidnight +
+        this.billForHoursAfterMidnightUntilFinishTime +
+        this.billForExtraHourBeforeMidnight +
+        this.billForExtraHourAfterMidnight;
+    }
+    console.log(this.showFinalBillInfo);
+
 
     this.setState({
-      hoursBeforeBedTime: 0,
-      hoursAfterBedTimeUntilMidnight: 0,
-      hoursAfterMidnightUntilFinishTime: 0,
-      extraHourBeforeMidnight: 0,
-      extraHourAfterMidnight: 0,
-      billForHoursBeforeBedTime: 0,
-      billForHoursAfterBedTimeUntilMidnight: 0,
-      billForHoursAfterMidnightUntilFinishTime: 0,
-      billForExtraHourBeforeMidnight: 0,
-      billForExtraHourAfterMidnight: 0,
-      totalInvoice: finalPayment,
-      showFinalBillInfo: finished
+      hoursBeforeBedTime: this.hoursBeforeBedTime,
+      hoursAfterBedTimeUntilMidnight: this.hoursAfterBedTimeUntilMidnight,
+      hoursAfterMidnightUntilFinishTime: this.hoursAfterMidnightUntilFinishTime,
+      extraHourBeforeMidnight: this.extraHourBeforeMidnight,
+      extraHourAfterMidnight: this.extraHourAfterMidnight,
+      billForHoursBeforeBedTime: this.billForHoursBeforeBedTime,
+      billForHoursAfterBedTimeUntilMidnight: this.billForHoursAfterBedTimeUntilMidnight,
+      billForHoursAfterMidnightUntilFinishTime: this.billForHoursAfterMidnightUntilFinishTime,
+      billForExtraHourBeforeMidnight: this.billForExtraHourBeforeMidnight,
+      billForExtraHourAfterMidnight: this.billForExtraHourAfterMidnight,
+      totalInvoice: this.totalInvoice,
+      showFinalBillInfo: this.showFinalBillInfo
 
     }, () => {
             this.startTimeInput.value = '';
@@ -77,9 +125,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.totalInvoice);
-    console.log(this.state.showFinalBillInfo);
-
     return (
       <div className="App">
         <Header />
