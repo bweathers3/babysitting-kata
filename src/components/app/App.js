@@ -134,8 +134,6 @@ class App extends Component {
           setBedTimeInputRef={this.setBedTimeInputRef}
           setFinishTimeInputRef={this.setFinishTimeInputRef}
         />
-        <Main />
-        <Notes />
         <Payment hoursBeforeBedTime={this.state.hoursBeforeBedTime}
           hoursAfterBedTimeUntilMidnight={this.state.hoursAfterBedTimeUntilMidnight}
           hoursAfterMidnightUntilFinishTime={this.state.hoursAfterMidnightUntilFinishTime}
@@ -148,6 +146,8 @@ class App extends Component {
           billForExtraHourAfterMidnight={this.state.billForExtraHourAfterMidnight}
           totalInvoice={this.state.totalInvoice}
           />
+        <Main />
+        <Notes />
       </div>
     );
   }
