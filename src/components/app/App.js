@@ -50,8 +50,13 @@ class App extends Component {
    };
 
 // Methods
+  determineCostForSession(hours, chargePerHour){
+    //console.log(hours, chargePerHour);
+    return hours * chargePerHour;
+  }
+
   determineRoundUpHours(firstMins, secondMins) {
-    console.log(firstMins, secondMins);
+    //console.log(firstMins, secondMins);
     return secondMins > firstMins ? 1 : 0;
   }
 
@@ -82,9 +87,12 @@ class App extends Component {
     this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
     //console.log(this.finishTimesArray);
     //console.log(this.determineHoursForEachSegment(5, 8));
-    console.log(this.determineRoundUpHours(30, 30));
-    console.log(this.determineRoundUpHours(15, 45));
-    console.log(this.determineRoundUpHours(45, 15));
+    //console.log(this.determineRoundUpHours(30, 30));
+    //console.log(this.determineRoundUpHours(15, 45));
+    //console.log(this.determineRoundUpHours(45, 15));
+    console.log(this.determineCostForSession(4, 12));
+    console.log(this.determineCostForSession(6, 8));
+    console.log(this.determineCostForSession(2, 18));
 
     this.setState({
       hoursBeforeBedTime: 0,
