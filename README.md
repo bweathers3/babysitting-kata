@@ -3,6 +3,8 @@ Welcome to the babysitting kata
 A demo of this app can be found at:
 https://boiling-plains-34961.herokuapp.com/
 
+
+
 Local Development Environment
 
 clone the repo first.
@@ -11,7 +13,7 @@ git clone https://github.com/bweathers3/babysitting-kata.git
 
 cd babysitting-kata
 
-Next run: npm install
+Then run: npm install
 
 
 
