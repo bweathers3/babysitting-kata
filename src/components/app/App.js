@@ -94,16 +94,16 @@ class App extends Component {
       this.billForExtraHourAfterMidnight;
 
     this.setState({
-      hoursBeforeBedTime: 0,
-      hoursAfterBedTimeUntilMidnight: 0,
-      hoursAfterMidnightUntilFinishTime: 0,
-      extraHourBeforeMidnight: 0,
-      extraHourAfterMidnight: 0,
-      billForHoursBeforeBedTime: 0,
-      billForHoursAfterBedTimeUntilMidnight: 0,
-      billForHoursAfterMidnightUntilFinishTime: 0,
-      billForExtraHourBeforeMidnight: 0,
-      billForExtraHourAfterMidnight: 0,
+      hoursBeforeBedTime: this.hoursBeforeBedTime,
+      hoursAfterBedTimeUntilMidnight: this.hoursAfterBedTimeUntilMidnight,
+      hoursAfterMidnightUntilFinishTime: this.hoursAfterMidnightUntilFinishTime,
+      extraHourBeforeMidnight: this.extraHourBeforeMidnight,
+      extraHourAfterMidnight: this.extraHourAfterMidnight,
+      billForHoursBeforeBedTime: this.billForHoursBeforeBedTime,
+      billForHoursAfterBedTimeUntilMidnight: this.billForHoursAfterBedTimeUntilMidnight,
+      billForHoursAfterMidnightUntilFinishTime: this.billForHoursAfterMidnightUntilFinishTime,
+      billForExtraHourBeforeMidnight: this.billForExtraHourBeforeMidnight,
+      billForExtraHourAfterMidnight: this.billForExtraHourAfterMidnight,
       totalInvoice: this.totalInvoice,
       showFinalBillInfo: true
 
