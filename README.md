@@ -7,7 +7,7 @@ https://boiling-plains-34961.herokuapp.com/
 
 Local Development Environment
 
-clone the repo first.
+Clone the repo first.
 
 git clone https://github.com/bweathers3/babysitting-kata.git
 
