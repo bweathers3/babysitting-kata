@@ -62,7 +62,7 @@ class App extends Component {
   }
 
   determineRoundUpHours(firstMins, secondMins) {
-    console.log(firstMins, secondMins);
+    //console.log(firstMins, secondMins);
     return firstMins !== secondMins ? 1 : 0;
   }
 
@@ -99,10 +99,11 @@ class App extends Component {
     this.extraHourBeforeMidnight = 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
     //console.log(this.hoursBeforeBedTime);
     this.hoursAfterBedTimeUntilMidnight = this.determineBedTimeAndAfterMidnightHours(this.bedTimesArray[0], this.finishTimesArray[0]);
-    console.log(this.hoursAfterBedTimeUntilMidnight);
+    //console.log(this.hoursAfterBedTimeUntilMidnight);
     this.finishTimesArray[0] < 5 ? this.extraHourAfterMidnight = this.determineRoundUpHours(0, this.finishTimesArray[1]) : this.extraHourAfterMidnight = 0;
-    console.log(this.extraHourAfterMidnight);
-
+    //console.log(this.extraHourAfterMidnight);
+    this.finishTimesArray[0] < 5 ? this.hoursAfterMidnightUntilFinishTime = this.finishTimesArray[0] : this.hoursAfterMidnightUntilFinishTime = 0;
+    console.log(this.hoursAfterMidnightUntilFinishTime);
 
     //console.log(this.determineHoursForEachSegment(5, 8));
     //console.log(this.determineRoundUpHours(30, 30));
@@ -146,7 +147,8 @@ class App extends Component {
     //console.log(this.startTimesArray);
     //console.log(this.bedTimesArray);
     //console.log(this.finishTimesArray);
-    console.log(this.hoursAfterBedTimeUntilMidnight);
+    //console.log(this.hoursAfterBedTimeUntilMidnight);
+    //console.log(this.extraHourAfterMidnight);
     console.log(this.extraHourAfterMidnight);
 
     return (
