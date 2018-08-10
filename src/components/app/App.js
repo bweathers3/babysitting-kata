@@ -79,10 +79,10 @@ class App extends Component {
     this.bedTimesArray = this.cutTime(this.bedTimeInput.value);
     this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
     this.showFinalBillInfo = this.validateAfterMidnight(this.finishTimesArray);
-    if (this.showFinalBillInfo == true){
+    if (this.showFinalBillInfo === true){
       this.hoursBeforeBedTime = this.determineHoursForEachSegment(this.startTimesArray[0], this.bedTimesArray[0]);
       this.extraHourBeforeMidnight = this.determineRoundUpHours(this.startTimesArray[1], this.bedTimesArray[1]);
-      this.extraHourBeforeMidnight == 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
+      this.extraHourBeforeMidnight === 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
       this.hoursAfterBedTimeUntilMidnight = this.determineBedTimeAndAfterMidnightHours(this.bedTimesArray[0], this.finishTimesArray[0]);
       this.finishTimesArray[0] < 5 ? this.extraHourAfterMidnight = this.determineRoundUpHours(0, this.finishTimesArray[1]) : this.extraHourAfterMidnight = 0;
       this.finishTimesArray[0] < 5 ? this.hoursAfterMidnightUntilFinishTime = this.finishTimesArray[0] : this.hoursAfterMidnightUntilFinishTime = 0;
