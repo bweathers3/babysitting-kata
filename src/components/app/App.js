@@ -99,7 +99,7 @@ class App extends Component {
         this.billForExtraHourBeforeMidnight +
         this.billForExtraHourAfterMidnight;
     }
-    console.log(this.showFinalBillInfo);
+
 
 
     this.setState({
@@ -136,7 +136,18 @@ class App extends Component {
         />
         <Main />
         <Notes />
-        <Payment />
+        <Payment hoursBeforeBedTime={this.state.hoursBeforeBedTime}
+          hoursAfterBedTimeUntilMidnight={this.state.hoursAfterBedTimeUntilMidnight}
+          hoursAfterMidnightUntilFinishTime={this.state.hoursAfterMidnightUntilFinishTime}
+          extraHourBeforeMidnight={this.state.extraHourBeforeMidnight}
+          extraHourAfterMidnight={this.state.extraHourAfterMidnight}
+          billForHoursBeforeBedTime={this.state.billForHoursBeforeBedTime}
+          billForHoursAfterBedTimeUntilMidnight={this.state.billForHoursAfterBedTimeUntilMidnight}
+          billForHoursAfterMidnightUntilFinishTime={this.state.billForHoursAfterMidnightUntilFinishTime}
+          billForExtraHourBeforeMidnight={this.state.billForExtraHourBeforeMidnight}
+          billForExtraHourAfterMidnight={this.state.billForExtraHourAfterMidnight}
+          totalInvoice={this.state.totalInvoice}
+          />
       </div>
     );
   }
