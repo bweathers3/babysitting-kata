@@ -50,6 +50,10 @@ class App extends Component {
    };
 
 // Methods
+  determineRoundUpHours(firstMins, secondMins) {
+    console.log(firstMins, secondMins);
+    return secondMins > firstMins ? 1 : 0;
+  }
 
   determineHoursForEachSegment(firstHour, secondHour) {
     //console.log(firstHour, secondHour);
@@ -78,6 +82,9 @@ class App extends Component {
     this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
     //console.log(this.finishTimesArray);
     //console.log(this.determineHoursForEachSegment(5, 8));
+    console.log(this.determineRoundUpHours(30, 30));
+    console.log(this.determineRoundUpHours(15, 45));
+    console.log(this.determineRoundUpHours(45, 15));
 
     this.setState({
       hoursBeforeBedTime: 0,
