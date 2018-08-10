@@ -57,7 +57,7 @@ class App extends Component {
 
   determineRoundUpHours(firstMins, secondMins) {
     //console.log(firstMins, secondMins);
-    return secondMins > firstMins ? 1 : 0;
+    return secondMins != firstMins ? 1 : 0;
   }
 
   determineHoursForEachSegment(firstHour, secondHour) {
@@ -83,16 +83,21 @@ class App extends Component {
     this.startTimeInput = this.cutTime(this.startTimeInput.value);
     //console.log(this.startTimeInput);
     this.bedTimeInput = this.cutTime(this.bedTimeInput.value);
-    //console.log(this.bedTimeInput);
+    console.log(this.bedTimeInput);
     this.finishTimeInput = this.cutTime(this.finishTimeInput.value);
     //console.log(this.finishTimeInput);
     this.hoursBeforeBedTime = this.determineHoursForEachSegment(this.startTimeInput[0], this.bedTimeInput[0]);
+    console.log(this.hoursBeforeBedTime);
+    this.extraHourBeforeMidnight = this.determineRoundUpHours(this.startTimeInput[1], this.bedTimeInput[1]);
+    console.log(this.extraHourBeforeMidnight);
+    this.extraHourBeforeMidnight = 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
     console.log(this.hoursBeforeBedTime);
 
     //console.log(this.determineHoursForEachSegment(5, 8));
     //console.log(this.determineRoundUpHours(30, 30));
     //console.log(this.determineRoundUpHours(15, 45));
-    //console.log(this.determineRoundUpHours(45, 15));
+    console.log(this.determineRoundUpHours(45, 15));
+    console.log(this.determineRoundUpHours(30, 0));
     //console.log(this.determineCostForSession(4, 12));
     //console.log(this.determineCostForSession(6, 8));
     //console.log(this.determineCostForSession(2, 18));
