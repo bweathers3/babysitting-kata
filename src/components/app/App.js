@@ -116,11 +116,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.totalInvoice);
-    console.log(this.state.showFinalBillInfo);
-
-    console.log(this.totalInvoice);
-
     return (
       <div className="App">
         <Header />
