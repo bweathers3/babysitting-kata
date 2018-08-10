@@ -50,6 +50,9 @@ class App extends Component {
    };
 
 // Methods
+
+
+
   determineCostForSession(hours, chargePerHour){
     //console.log(hours, chargePerHour);
     return hours * chargePerHour;
@@ -80,19 +83,22 @@ class App extends Component {
   onFormSubmit(e){
     e.preventDefault();
 
-    this.startTimesArray = this.cutTime(this.startTimeInput.value);
-    //console.log(this.startTimesArray);
-    this.bedTimesArray = this.cutTime(this.bedTimeInput.value);
-    //console.log(this.bedTimesArray);
-    this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
-    //console.log(this.finishTimesArray);
+    this.startTimeInput = this.cutTime(this.startTimeInput.value);
+    console.log(this.startTimeInput);
+    this.bedTimeInput = this.cutTime(this.bedTimeInput.value);
+    console.log(this.bedTimeInput);
+    this.finishTimeInput = this.cutTime(this.finishTimeInput.value);
+    console.log(this.finishTimeInput);
+
+
+
     //console.log(this.determineHoursForEachSegment(5, 8));
     //console.log(this.determineRoundUpHours(30, 30));
     //console.log(this.determineRoundUpHours(15, 45));
     //console.log(this.determineRoundUpHours(45, 15));
-    console.log(this.determineCostForSession(4, 12));
-    console.log(this.determineCostForSession(6, 8));
-    console.log(this.determineCostForSession(2, 18));
+    //console.log(this.determineCostForSession(4, 12));
+    //console.log(this.determineCostForSession(6, 8));
+    //console.log(this.determineCostForSession(2, 18));
 
     this.setState({
       hoursBeforeBedTime: 0,
