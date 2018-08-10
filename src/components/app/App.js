@@ -21,9 +21,6 @@ class App extends Component {
       bedTimeInput: "",
       finishTimeInput: "",
       hoursBeforeBedTime: 0,
-      startTimesArray: [],
-      bedTimesArray: [],
-      finishTimesArray: [],
       hoursAfterBedTimeUntilMidnight: 0,
       hoursAfterMidnightUntilFinishTime: 0,
       extraHourBeforeMidnight: 0,
@@ -84,13 +81,13 @@ class App extends Component {
     e.preventDefault();
 
     this.startTimeInput = this.cutTime(this.startTimeInput.value);
-    console.log(this.startTimeInput);
+    //console.log(this.startTimeInput);
     this.bedTimeInput = this.cutTime(this.bedTimeInput.value);
-    console.log(this.bedTimeInput);
+    //console.log(this.bedTimeInput);
     this.finishTimeInput = this.cutTime(this.finishTimeInput.value);
-    console.log(this.finishTimeInput);
-
-
+    //console.log(this.finishTimeInput);
+    this.hoursBeforeBedTime = this.determineHoursForEachSegment(this.startTimeInput[0], this.bedTimeInput[0]);
+    console.log(this.hoursBeforeBedTime);
 
     //console.log(this.determineHoursForEachSegment(5, 8));
     //console.log(this.determineRoundUpHours(30, 30));
@@ -125,6 +122,7 @@ class App extends Component {
   render() {
     console.log(this.state.totalInvoice);
     console.log(this.state.showFinalBillInfo);
+    console.log(this.hoursBeforeBedTime);
     //console.log(this.startTimesArray);
     //console.log(this.bedTimesArray);
     //console.log(this.finishTimesArray);
