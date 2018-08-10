@@ -6,8 +6,7 @@ import Payment from '../payment/Payment'
 import TimeForm from '../timeForm/TimeForm'
 import './App.css';
 
-var [ finished ] = [ true ];
-var [ finalPayment ] = [ 1000 ];
+var [ finished, finalPayment, startTimesArray, bedTimesArray, finishTimesArray ] = [ true, 1000, [], [], [] ];
 
 class App extends Component {
 
@@ -47,12 +46,28 @@ class App extends Component {
     };
    };
 
+// Methods
+  cutTime(str) {
+    //console.log(str);
+    return [ Number(str.slice(0, 2)), Number(str.slice(3, 5)) ]
+  }
+
+
+
+
+
+//*******
+
+
   onFormSubmit(e){
     e.preventDefault();
-    console.log(e);
-    console.log(this.startTimeInput.value);
-    console.log(this.bedTimeInput.value);
-    console.log(this.finishTimeInput.value);
+
+    this.startTimesArray = this.cutTime(this.startTimeInput.value);
+    //console.log(this.startTimesArray);
+    this.bedTimesArray = this.cutTime(this.bedTimeInput.value);
+    //console.log(this.bedTimesArray);
+    this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
+    //console.log(this.finishTimesArray);
 
     this.setState({
       hoursBeforeBedTime: 0,
