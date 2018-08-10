@@ -52,7 +52,7 @@ class App extends Component {
 // Methods
 
   determineBedTimeAndAfterMidnightHours(bedTime, finishTime){
-    console.log(bedTime, finishTime);
+    //console.log(bedTime, finishTime);
     return finishTime <= 5 ?  24 - bedTime : finishTime - bedTime;
   }
 
@@ -62,8 +62,8 @@ class App extends Component {
   }
 
   determineRoundUpHours(firstMins, secondMins) {
-    //console.log(firstMins, secondMins);
-    return secondMins !== firstMins ? 1 : 0;
+    console.log(firstMins, secondMins);
+    return firstMins !== secondMins ? 1 : 0;
   }
 
   determineHoursForEachSegment(firstHour, secondHour) {
@@ -100,7 +100,8 @@ class App extends Component {
     //console.log(this.hoursBeforeBedTime);
     this.hoursAfterBedTimeUntilMidnight = this.determineBedTimeAndAfterMidnightHours(this.bedTimesArray[0], this.finishTimesArray[0]);
     console.log(this.hoursAfterBedTimeUntilMidnight);
-
+    this.finishTimesArray[0] < 5 ? this.extraHourAfterMidnight = this.determineRoundUpHours(0, this.finishTimesArray[1]) : this.extraHourAfterMidnight = 0;
+    console.log(this.extraHourAfterMidnight);
 
 
     //console.log(this.determineHoursForEachSegment(5, 8));
@@ -146,6 +147,7 @@ class App extends Component {
     //console.log(this.bedTimesArray);
     //console.log(this.finishTimesArray);
     console.log(this.hoursAfterBedTimeUntilMidnight);
+    console.log(this.extraHourAfterMidnight);
 
     return (
       <div className="App">
