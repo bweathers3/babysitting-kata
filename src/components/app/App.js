@@ -6,7 +6,7 @@ import Payment from '../payment/Payment'
 import TimeForm from '../timeForm/TimeForm'
 import './App.css';
 
-var [ finished, finalPayment, startTimesArray, bedTimesArray, finishTimesArray ] = [ true, 1000, [], [], [] ];
+var [ finished, finalPayment ] = [ true, 1000 ];
 
 class App extends Component {
 
@@ -21,6 +21,9 @@ class App extends Component {
       bedTimeInput: "",
       finishTimeInput: "",
       hoursBeforeBedTime: 0,
+      startTimesArray: [],
+      bedTimesArray: [],
+      finishTimesArray: [],
       hoursAfterBedTimeUntilMidnight: 0,
       hoursAfterMidnightUntilFinishTime: 0,
       extraHourBeforeMidnight: 0,
@@ -47,6 +50,12 @@ class App extends Component {
    };
 
 // Methods
+
+  determineHoursForEachSegment(firstHour, secondHour) {
+    //console.log(firstHour, secondHour);
+    return secondHour - firstHour;
+  }
+
   cutTime(str) {
     //console.log(str);
     return [ Number(str.slice(0, 2)), Number(str.slice(3, 5)) ]
@@ -68,6 +77,7 @@ class App extends Component {
     //console.log(this.bedTimesArray);
     this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
     //console.log(this.finishTimesArray);
+    //console.log(this.determineHoursForEachSegment(5, 8));
 
     this.setState({
       hoursBeforeBedTime: 0,
@@ -94,6 +104,9 @@ class App extends Component {
   render() {
     console.log(this.state.totalInvoice);
     console.log(this.state.showFinalBillInfo);
+    //console.log(this.startTimesArray);
+    //console.log(this.bedTimesArray);
+    //console.log(this.finishTimesArray);
 
     return (
       <div className="App">
