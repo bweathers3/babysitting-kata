@@ -78,27 +78,28 @@ class App extends Component {
     this.startTimesArray = this.cutTime(this.startTimeInput.value);
     this.bedTimesArray = this.cutTime(this.bedTimeInput.value);
     this.finishTimesArray = this.cutTime(this.finishTimeInput.value);
+    this.showFinalBillInfo = this.validateAfterMidnight(this.startTimesArray);
+    this.showFinalBillInfo = this.validateAfterMidnight(this.bedTimesArray);
     this.showFinalBillInfo = this.validateAfterMidnight(this.finishTimesArray);
-    if (this.showFinalBillInfo === true){
-      this.hoursBeforeBedTime = this.determineHoursForEachSegment(this.startTimesArray[0], this.bedTimesArray[0]);
-      this.extraHourBeforeMidnight = this.determineRoundUpHours(this.startTimesArray[1], this.bedTimesArray[1]);
-      this.extraHourBeforeMidnight === 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
-      this.hoursAfterBedTimeUntilMidnight = this.determineBedTimeAndAfterMidnightHours(this.bedTimesArray[0], this.finishTimesArray[0]);
-      this.finishTimesArray[0] < 5 ? this.extraHourAfterMidnight = this.determineRoundUpHours(0, this.finishTimesArray[1]) : this.extraHourAfterMidnight = 0;
-      this.finishTimesArray[0] < 5 ? this.hoursAfterMidnightUntilFinishTime = this.finishTimesArray[0] : this.hoursAfterMidnightUntilFinishTime = 0;
 
-      this.billForHoursBeforeBedTime = this.hoursBeforeBedTime  * 12;
-      this.billForHoursAfterBedTimeUntilMidnight = this.hoursAfterBedTimeUntilMidnight  * 8;
-      this.billForHoursAfterMidnightUntilFinishTime = this.hoursAfterMidnightUntilFinishTime  * 16;
-      this.billForExtraHourBeforeMidnight = this.extraHourBeforeMidnight  * 12;
-      this.billForExtraHourAfterMidnight = this.extraHourAfterMidnight  * 16;
+    this.hoursBeforeBedTime = this.determineHoursForEachSegment(this.startTimesArray[0], this.bedTimesArray[0]);
+    this.extraHourBeforeMidnight = this.determineRoundUpHours(this.startTimesArray[1], this.bedTimesArray[1]);
+    this.extraHourBeforeMidnight === 1 ? this.hoursBeforeBedTime = this.hoursBeforeBedTime - 1 : this.hoursBeforeBedTime;
+    this.hoursAfterBedTimeUntilMidnight = this.determineBedTimeAndAfterMidnightHours(this.bedTimesArray[0], this.finishTimesArray[0]);
+    this.finishTimesArray[0] < 5 ? this.extraHourAfterMidnight = this.determineRoundUpHours(0, this.finishTimesArray[1]) : this.extraHourAfterMidnight = 0;
+    this.finishTimesArray[0] < 5 ? this.hoursAfterMidnightUntilFinishTime = this.finishTimesArray[0] : this.hoursAfterMidnightUntilFinishTime = 0;
 
-      this.totalInvoice = this.billForHoursBeforeBedTime +
-        this.billForHoursAfterBedTimeUntilMidnight +
-        this.billForHoursAfterMidnightUntilFinishTime +
-        this.billForExtraHourBeforeMidnight +
-        this.billForExtraHourAfterMidnight;
-    }
+    this.billForHoursBeforeBedTime = this.hoursBeforeBedTime  * 12;
+    this.billForHoursAfterBedTimeUntilMidnight = this.hoursAfterBedTimeUntilMidnight  * 8;
+    this.billForHoursAfterMidnightUntilFinishTime = this.hoursAfterMidnightUntilFinishTime  * 16;
+    this.billForExtraHourBeforeMidnight = this.extraHourBeforeMidnight  * 12;
+    this.billForExtraHourAfterMidnight = this.extraHourAfterMidnight  * 16;
+
+    this.totalInvoice = this.billForHoursBeforeBedTime +
+      this.billForHoursAfterBedTimeUntilMidnight +
+      this.billForHoursAfterMidnightUntilFinishTime +
+      this.billForExtraHourBeforeMidnight +
+      this.billForExtraHourAfterMidnight;
 
 
 
