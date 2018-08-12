@@ -1,28 +1,42 @@
-Welcome to the babysitting kata
+## Welcome to the babysitting kata
 
 A demo of this app can be found at:
 https://boiling-plains-34961.herokuapp.com/
 
+This application uses <input type=time> for time inputs. This is not supported by Safari but should be supported by other major browsers. When using Safari time inputs should be with miltary times as like these examples; 5:00 PM = "17:00", 4:00AM = "04:00", 11:00PM = "23:00".
+
+## Local Development Environment
+
+Start by cloning the repository:
+
+```
+$ git clone https://github.com/bweathers3/babysitting-kata.git
 
 
-Local Development Environment
+then cd babysitting-kata
+```
 
-Clone the repo first.
+Install the project dependencies by running:
 
-git clone https://github.com/bweathers3/babysitting-kata.git
+```
+$ npm install
 
-cd babysitting-kata
+```
 
-Then run: npm install
+## Run the Application
 
+Run the application using:
 
+```
+npm start
 
-To run the frontend use the localhost:3000
+```
 
-You can now visit http://localhost:3000
+## Test the Application Locally
 
-to start the application locally: npm start
+Run the application using:
 
+```
+npm test
 
-
-To Test Locally: npm test
+```
