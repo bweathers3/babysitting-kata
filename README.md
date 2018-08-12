@@ -3,7 +3,7 @@
 A demo of this app can be found at:
 https://boiling-plains-34961.herokuapp.com/
 
-This application uses <input type=time> for time inputs. This is not supported by Safari but should be supported by other major browsers. When using Safari time inputs should be with miltary times as like these examples; 5:00 PM = "17:00", 4:00AM = "04:00", 11:00PM = "23:00".
+This application uses "<input type=time>" for time inputs. This is not supported by Safari but should be supported by other major browsers. When using Safari time inputs should be with military times as like these examples; 5:00 PM = "17:00", 4:00AM = "04:00", 11:00PM = "23:00".
 
 ## Local Development Environment
 
