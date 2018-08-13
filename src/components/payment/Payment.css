@@ -7,3 +7,18 @@
   font-size: large;
   color: red;
 }
+
+.return-button {
+  float: center;
+  background-color: #0000ff;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.retrun-button:hover {
+    background-color: #87CEEB;
+    color: white;
+}
