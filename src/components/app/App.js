@@ -10,14 +10,14 @@ class App extends Component {
 
   constructor (props) {
     super(props);
-    this.startTimeInput = null;
-    this.bedTimeInput = null;
-    this.finishTimeInput = null;
+    this.startTimeInput = '';
+    this.bedTimeInput = '';
+    this.finishTimeInput = '';
     this.state = {
       showFinalBillInfo: false,
-      startTimeInput: "",
-      bedTimeInput: "",
-      finishTimeInput: "",
+      startTimeInput: null,
+      bedTimeInput: null,
+      finishTimeInput: null,
       startTimesArray: [],
       bedTimesArray: [],
       finishTimesArray:[],
@@ -47,10 +47,10 @@ class App extends Component {
     };
    };
 
-   validateAfterMidnight(holdArray) {
-     var totalMins = (holdArray[0]*60) + holdArray[1];
-     return totalMins > 240 && totalMins < 1020 ?  false : true;
-   }
+  validateAfterMidnight(holdArray) {
+   var totalMins = (holdArray[0]*60) + holdArray[1];
+   return totalMins > 240 && totalMins < 1020 ?  false : true;
+  }
 
   determineBedTimeAndAfterMidnightHours(bedTime, finishTime){
     return finishTime <= 5 ?  24 - bedTime : finishTime - bedTime;
@@ -118,9 +118,9 @@ class App extends Component {
       showFinalBillInfo: this.showFinalBillInfo
 
     }, () => {
-            this.startTimeInput.value = '';
-            this.bedTimeInput.value = '';
-            this.finishTimeInput.value = '';
+            this.startTimeInput = null;
+            this.bedTimeInput = null;
+            this.finishTimeInput = null;
             });
     e.target.value = '';
   };
@@ -129,12 +129,15 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        { !this.showFinalBillInfo &&
         <TimeForm
           onFormSubmit={(e) => this.onFormSubmit(e)}
           setStartTimeInputRef={this.setStartTimeInputRef}
           setBedTimeInputRef={this.setBedTimeInputRef}
           setFinishTimeInputRef={this.setFinishTimeInputRef}
         />
+       }
+       { this.showFinalBillInfo &&
         <Payment hoursBeforeBedTime={this.state.hoursBeforeBedTime}
           hoursAfterBedTimeUntilMidnight={this.state.hoursAfterBedTimeUntilMidnight}
           hoursAfterMidnightUntilFinishTime={this.state.hoursAfterMidnightUntilFinishTime}
@@ -147,8 +150,13 @@ class App extends Component {
           billForExtraHourAfterMidnight={this.state.billForExtraHourAfterMidnight}
           totalInvoice={this.state.totalInvoice}
           />
+        }
+        { !this.showFinalBillInfo &&
         <Main />
+        }
+        { !this.showFinalBillInfo &&
         <Notes />
+        }
       </div>
     );
   }
